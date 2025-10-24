@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for Beacon IR */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-primary-navy text-text-primary font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent-gold text-primary-navy px-6 py-3 rounded-lg font-semibold hover:bg-accent-gold/90 transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply border border-accent-lightBlue text-accent-lightBlue px-6 py-3 rounded-lg font-semibold hover:bg-accent-lightBlue hover:text-primary-navy transition-colors duration-200;
+  }
+  
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 lg:py-24;
+  }
+  
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+}
