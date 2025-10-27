@@ -166,14 +166,33 @@ const nextConfig = {
 };
 ```
 
-### 2. Database (Future: Strapi)
+### 2. Database (Strapi CMS - Phase 2)
 
-When you add Strapi CMS:
+**Current Status:** Marketing site only (no Strapi yet)
 
-1. Create a new service in Railway
+When deploying Strapi CMS in Phase 2:
+
+1. Create a new service in Railway project
 2. Select **"Database"** → **PostgreSQL**
-3. Add as an internal service
-4. Update environment variables with database connection string
+3. Railway creates PostgreSQL instance automatically
+4. Note the database connection string
+5. Add to Strapi environment variables
+
+**Strapi Deployment (Separate Service):**
+
+Strapi CMS will be deployed as a second Railway service:
+
+1. Add another service to your project
+2. Connect to same GitHub repo
+3. Railway detects Strapi from `src/api` folder
+4. Add environment variables:
+   - `DATABASE_URL` (from PostgreSQL service)
+   - `HOST` (0.0.0.0 for Railway)
+   - `PORT` (3001 or Railway-assigned)
+   - `API_TOKEN_SALT` (generate random)
+   - `ADMIN_JWT_SECRET` (generate random)
+
+**For detailed Strapi setup, see:** `docs/strapi-setup-guide.md`
 
 ---
 

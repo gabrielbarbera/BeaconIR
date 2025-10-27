@@ -1,5 +1,9 @@
 # 🚂 Railway Deployment - Quick Start
 
+**What's Deployed:** Marketing Website (Next.js)  
+**Phase 2:** Strapi CMS (not yet deployed)  
+**See:** `docs/railway-setup-guide.md` for complete setup
+
 ## 🎯 Quick Steps
 
 ### 1. Connect to Railway
