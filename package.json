@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev -p 4000",
     "build": "next build",
-    "start": "next start -p 4001",
+    "start": "node .next/standalone/server.js",
+    "start:fallback": "next start -p 4001",
     "lint": "next lint"
   },
   "dependencies": {
