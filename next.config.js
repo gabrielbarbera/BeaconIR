@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Optimized for Railway deployment
-  output: 'standalone',
+  // Railway deployment (non-standalone for better compatibility)
+  // output: 'standalone',
   
   // Image configuration
   images: {
