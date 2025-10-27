@@ -11,7 +11,7 @@
 export type ModuleAccess = {
   hasIRAccess: boolean;
   hasPRAccess: boolean;
-  bundleTier: "none" | "starter" | "growth" | "premium";
+  bundleTier: "none" | "starter" | "growth" | "premium" | "enterprise";
   clientEmail: string;
 };
 
