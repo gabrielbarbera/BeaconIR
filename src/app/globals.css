@@ -3,36 +3,186 @@
 @tailwind utilities;
 
 /* Custom CSS for Beacon IR */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    cursor: url("/cursor.svg") 6 6, auto;
   }
-  
+
   body {
-    @apply bg-primary-navy text-text-primary font-sans;
+    @apply bg-deep-navy text-pure-white font-sans;
+    position: relative;
+    cursor: url("/cursor.svg") 6 6, auto;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+
+  /* Custom cursor for interactive elements */
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"],
+  .btn-primary,
+  .btn-secondary {
+    cursor: url("/cursor.svg") 6 6, pointer;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans;
   }
 }
 
+/* Spotlight effect - outside @layer for custom properties */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 1000px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(245, 197, 90, 0.35) 0%,
+    rgba(245, 197, 90, 0.2) 30%,
+    rgba(245, 197, 90, 0.08) 50%,
+    transparent 80%
+  );
+  z-index: 1;
+  mix-blend-mode: screen;
+  opacity: 0.6;
+}
+
 @layer components {
+  /* Enhanced Professional Button Styles */
   .btn-primary {
-    @apply bg-accent-gold text-primary-navy px-6 py-3 rounded-lg font-semibold hover:bg-accent-gold/90 transition-colors duration-200;
+    @apply bg-beacon-gold text-deep-navy px-8 py-4 rounded-xl font-semibold 
+           shadow-lg shadow-beacon-gold/20 
+           hover:bg-beacon-gold/95 hover:shadow-xl hover:shadow-beacon-gold/30
+           hover:-translate-y-0.5 
+           transition-all duration-300 ease-out
+           relative overflow-hidden;
   }
-  
+
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+
   .btn-secondary {
-    @apply border border-accent-lightBlue text-accent-lightBlue px-6 py-3 rounded-lg font-semibold hover:bg-accent-lightBlue hover:text-primary-navy transition-colors duration-200;
+    @apply border-2 border-beacon-gold text-beacon-gold px-8 py-4 rounded-xl font-semibold 
+           hover:bg-beacon-gold hover:text-deep-navy 
+           hover:shadow-lg hover:shadow-beacon-gold/20
+           hover:-translate-y-0.5
+           transition-all duration-300 ease-out;
   }
-  
+
   .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-16 lg:py-24;
+    @apply px-4 sm:px-6 lg:px-8 py-20 lg:py-32;
   }
-  
+
   .container-max {
     @apply max-w-7xl mx-auto;
+  }
+
+  /* Professional Card Enhancement */
+  .card-professional {
+    @apply backdrop-blur-xl rounded-2xl p-8
+           border
+           shadow-lg shadow-black/10
+           hover:shadow-xl hover:shadow-black/20
+           transition-all duration-300;
+    background: rgba(27, 36, 51, 0.6);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .card-professional:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Glassmorphism Card Style */
+  .card-glass {
+    @apply backdrop-blur-xl rounded-2xl p-8
+           border
+           shadow-lg shadow-black/20
+           hover:shadow-xl
+           transition-all duration-300;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .card-glass:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Gradient Background Variations */
+  .bg-gradient-navy {
+    background: linear-gradient(135deg, #0e1525 0%, #1b2433 50%, #0e1525 100%);
+  }
+
+  .bg-gradient-gold {
+    background: linear-gradient(
+      135deg,
+      rgba(245, 197, 90, 0.1) 0%,
+      rgba(245, 197, 90, 0.05) 50%,
+      transparent 100%
+    );
+  }
+
+  .bg-gradient-radial {
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(245, 197, 90, 0.08) 0%,
+      transparent 70%
+    );
+  }
+
+  /* Enhanced Typography */
+  .heading-main {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-pure-white 
+           leading-tight tracking-tight;
+  }
+
+  .heading-section {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-pure-white 
+           leading-tight tracking-tight;
+  }
+
+  .heading-subsection {
+    @apply text-2xl font-semibold text-pure-white leading-snug;
+  }
+
+  /* Text Styles */
+  .text-body-lg {
+    @apply text-lg md:text-xl text-stone-gray leading-relaxed;
+  }
+
+  .text-body-base {
+    @apply text-base text-stone-gray leading-relaxed;
+  }
+
+  .text-emphasis {
+    @apply text-beacon-gold italic font-serif;
   }
 }

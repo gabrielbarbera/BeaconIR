@@ -1,16 +1,16 @@
-import Hero from '@/components/Hero'
-import Services from '@/components/Services'
-import WhyBeacon from '@/components/WhyBeacon'
-import WhoWeServe from '@/components/WhoWeServe'
-import Testimonials from '@/components/Testimonials'
-import CTAStrip from '@/components/CTAStrip'
-import About from '@/components/About'
-import Contact from '@/components/Contact'
-import Footer from '@/components/Footer'
+import About from "@/components/About";
+import Contact from "@/components/Contact";
+import CTAStrip from "@/components/CTAStrip";
+import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import Services from "@/components/Services";
+import Testimonials from "@/components/Testimonials";
+import WhoWeServe from "@/components/WhoWeServe";
+import WhyBeacon from "@/components/WhyBeacon";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <>
       <Hero />
       <Services />
       <WhyBeacon />
@@ -20,6 +20,6 @@ export default function Home() {
       <About />
       <Contact />
       <Footer />
-    </main>
-  )
+    </>
+  );
 }
