@@ -24,6 +24,8 @@ AGILED_API_KEY=agiled_your_api_key_here
 - Invoicing for $250-2000/month tiers
 - Client portal for each client
 
+**📚 API Documentation:** See [agiled-api-documentation.md](./agiled-api-documentation.md) for detailed API reference, endpoints, and integration examples.
+
 ---
 
 ### 2. SendFox Email Marketing
