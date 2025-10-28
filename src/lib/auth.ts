@@ -67,7 +67,7 @@ export const authOptions: NextAuthOptions = {
   },
 };
 
-// Placeholder function - replace with actual database query
+// Database query function
 async function getUserByEmail(email: string): Promise<{
   id: number;
   email: string;
@@ -76,9 +76,20 @@ async function getUserByEmail(email: string): Promise<{
   company_id?: number;
   role: string;
 } | null> {
-  // TODO: Query Neon PostgreSQL database
-  // Example:
-  // const response = await fetch(`${process.env.DATABASE_URL}/users?email=${email}`);
-  // return response.json();
-  return null;
+  try {
+    const { query } = await import('./db');
+    const result = await query(
+      'SELECT * FROM users WHERE email = $1',
+      [email]
+    );
+
+    if (result.rows.length === 0) {
+      return null;
+    }
+
+    return result.rows[0];
+  } catch (error) {
+    console.error('Database query error:', error);
+    return null;
+  }
 }

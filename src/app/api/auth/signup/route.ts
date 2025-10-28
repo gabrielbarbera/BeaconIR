@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { hash } from "bcryptjs";
+import { query } from "@/lib/db";
 
 export async function POST(request: Request) {
   try {
@@ -20,31 +21,34 @@ export async function POST(request: Request) {
       );
     }
 
-    // TODO: Check if user already exists in database
-    // const existingUser = await getUserByEmail(email);
-    // if (existingUser) {
-    //   return NextResponse.json(
-    //     { error: "User already exists" },
-    //     { status: 400 }
-    //   );
-    // }
+    // Check if user already exists
+    const existingUser = await query(
+      'SELECT id FROM users WHERE email = $1',
+      [email]
+    );
+
+    if (existingUser.rows.length > 0) {
+      return NextResponse.json(
+        { error: "User already exists" },
+        { status: 400 }
+      );
+    }
 
     // Hash password
     const hashedPassword = await hash(password, 10);
 
-    // TODO: Save user to database
-    // const user = await createUser({
-    //   name,
-    //   email,
-    //   password: hashedPassword,
-    //   role: 'viewer',
-    // });
+    // Save user to database
+    const result = await query(
+      'INSERT INTO users (name, email, password, role) VALUES ($1, $2, $3, $4) RETURNING id, email, name',
+      [name, email, hashedPassword, 'viewer']
+    );
 
-    // For now, return success (will fail on login until database is connected)
+    const user = result.rows[0];
+
     return NextResponse.json(
       { 
         message: "Account created successfully",
-        // user: { id: user.id, email: user.email, name: user.name }
+        user: { id: user.id, email: user.email, name: user.name }
       },
       { status: 201 }
     );
