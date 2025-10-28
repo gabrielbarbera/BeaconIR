@@ -1,10 +1,13 @@
 /**
  * Strapi CMS Client
- * 
+ *
  * Fetches content from the Strapi CMS backend
  */
 
-const CMS_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || process.env.STRAPI_API_URL || 'https://orderly-rhythm-491ff3f123.strapiapp.com';
+const CMS_URL =
+  process.env.NEXT_PUBLIC_STRAPI_API_URL ||
+  process.env.STRAPI_API_URL ||
+  "https://orderly-rhythm-491ff3f123.strapiapp.com";
 
 interface StrapiResponse<T> {
   data: T;
@@ -34,9 +37,9 @@ async function fetchSingleType<T>(endpoint: string): Promise<T | null> {
   try {
     const response = await fetch(`${CMS_URL}/api${endpoint}?populate=*`, {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      cache: 'no-store',
+      cache: "no-store",
     });
 
     if (!response.ok) {
@@ -59,9 +62,9 @@ async function fetchCollection<T>(endpoint: string): Promise<T[]> {
   try {
     const response = await fetch(`${CMS_URL}/api${endpoint}?populate=*`, {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      cache: 'no-store',
+      cache: "no-store",
     });
 
     if (!response.ok) {
@@ -115,10 +118,9 @@ export interface CTA {
 
 // Fetch Functions
 export const cms = {
-  getHero: async () => fetchSingleType<Hero>('/hero'),
-  getServices: async () => fetchCollection<Service>('/services'),
-  getTestimonials: async () => fetchCollection<Testimonial>('/testimonials'),
-  getAbout: async () => fetchSingleType<About>('/about'),
-  getCTA: async () => fetchSingleType<CTA>('/cta'),
+  getHero: async () => fetchSingleType<Hero>("/hero"),
+  getServices: async () => fetchCollection<Service>("/services"),
+  getTestimonials: async () => fetchCollection<Testimonial>("/testimonials"),
+  getAbout: async () => fetchSingleType<About>("/about"),
+  getCTA: async () => fetchSingleType<CTA>("/cta"),
 };
-

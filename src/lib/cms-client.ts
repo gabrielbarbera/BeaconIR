@@ -1,6 +1,9 @@
 // CMS (Strapi) client for content management
 
-const CMS_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || process.env.STRAPI_API_URL || "https://orderly-rhythm-491ff3f123.strapiapp.com";
+const CMS_URL =
+  process.env.NEXT_PUBLIC_STRAPI_API_URL ||
+  process.env.STRAPI_API_URL ||
+  "https://orderly-rhythm-491ff3f123.strapiapp.com";
 
 export interface CMSContent {
   id: number;
