@@ -1,6 +1,6 @@
+import { compare } from "bcryptjs";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { compare } from "bcryptjs";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -8,7 +8,7 @@ export const authOptions: NextAuthOptions = {
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" }
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
@@ -18,7 +18,7 @@ export const authOptions: NextAuthOptions = {
         // TODO: Replace with actual database query
         // For now, this is a placeholder
         const user = await getUserByEmail(credentials.email);
-        
+
         if (!user || !user.password) {
           return null;
         }
@@ -39,14 +39,14 @@ export const authOptions: NextAuthOptions = {
           companyId: user.company_id?.toString(),
           role: user.role,
         };
-      }
-    })
+      },
+    }),
   ],
   pages: {
-    signIn: '/auth/login',
+    signIn: "/auth/login",
   },
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -63,8 +63,8 @@ export const authOptions: NextAuthOptions = {
         session.user.role = token.role;
       }
       return session;
-    }
-  }
+    },
+  },
 };
 
 // Placeholder function - replace with actual database query
@@ -82,4 +82,3 @@ async function getUserByEmail(email: string): Promise<{
   // return response.json();
   return null;
 }
-
