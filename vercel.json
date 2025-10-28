@@ -1,0 +1,30 @@
+# Vercel Configuration for Beacon IR
+
+# Build Settings
+[build]
+  command = "npm run build"
+  output = ".next"
+
+# Environment Variables
+# These should be set in the Vercel Dashboard
+# https://vercel.com/beaconir/settings/environment-variables
+
+# Production Environment
+[production]
+  AGILED_API_KEY=your_production_agiled_key
+  SENDFOX_API_KEY=your_production_sendfox_key
+  SENDFOX_LIST_ID=your_sendfox_list_id
+  TIDYCAL_API_KEY=your_tidycal_api_key
+  NEXT_PUBLIC_SITE_URL=https://beaconir.com
+
+# Preview Environment
+[preview]
+  AGILED_API_KEY=your_preview_agiled_key
+  SENDFOX_API_KEY=your_preview_sendfox_key
+  SENDFOX_LIST_ID=your_preview_sendfox_list_id
+  TIDYCAL_API_KEY=your_preview_tidycal_api_key
+
+# Development Environment
+[development]
+  NODE_ENV=development
+  NEXT_PUBLIC_SITE_URL=http://localhost:4000
