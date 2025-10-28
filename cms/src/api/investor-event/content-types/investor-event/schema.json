@@ -24,12 +24,7 @@
     },
     "type": {
       "type": "enumeration",
-      "enum": [
-        "Conference",
-        "Webinar",
-        "Annual Meeting",
-        "Earnings Call"
-      ],
+      "enum": ["Conference", "Webinar", "Annual Meeting", "Earnings Call"],
       "required": true
     },
     "description": {
@@ -45,4 +40,3 @@
     }
   }
 }
-

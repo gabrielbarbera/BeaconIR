@@ -25,12 +25,7 @@
     },
     "category": {
       "type": "enumeration",
-      "enum": [
-        "Press Release",
-        "Event",
-        "Financial Update",
-        "Corporate News"
-      ]
+      "enum": ["Press Release", "Event", "Financial Update", "Corporate News"]
     },
     "company": {
       "type": "relation",
@@ -39,4 +34,3 @@
     }
   }
 }
-

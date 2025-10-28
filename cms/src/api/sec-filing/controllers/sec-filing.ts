@@ -1,4 +1,3 @@
-import { factories } from '@strapi/strapi'
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreController('api::sec-filing.sec-filing');
-
+export default factories.createCoreController("api::sec-filing.sec-filing");

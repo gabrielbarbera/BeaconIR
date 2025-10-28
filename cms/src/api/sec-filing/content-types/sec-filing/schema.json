@@ -17,13 +17,7 @@
     },
     "filingType": {
       "type": "enumeration",
-      "enum": [
-        "10-K",
-        "10-Q",
-        "8-K",
-        "Proxy Statement",
-        "Other"
-      ],
+      "enum": ["10-K", "10-Q", "8-K", "Proxy Statement", "Other"],
       "required": true
     },
     "filingDate": {
@@ -42,4 +36,3 @@
     }
   }
 }
-
