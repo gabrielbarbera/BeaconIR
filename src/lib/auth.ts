@@ -19,7 +19,7 @@ export const authOptions: NextAuthOptions = {
         // For now, this is a placeholder
         const user = await getUserByEmail(credentials.email);
         
-        if (!user) {
+        if (!user || !user.password) {
           return null;
         }
 
@@ -44,7 +44,6 @@ export const authOptions: NextAuthOptions = {
   ],
   pages: {
     signIn: '/auth/login',
-    signUp: '/auth/signup',
   },
   session: {
     strategy: 'jwt',
@@ -69,7 +68,14 @@ export const authOptions: NextAuthOptions = {
 };
 
 // Placeholder function - replace with actual database query
-async function getUserByEmail(email: string) {
+async function getUserByEmail(email: string): Promise<{
+  id: number;
+  email: string;
+  name: string;
+  password: string;
+  company_id?: number;
+  role: string;
+} | null> {
   // TODO: Query Neon PostgreSQL database
   // Example:
   // const response = await fetch(`${process.env.DATABASE_URL}/users?email=${email}`);
