@@ -4,7 +4,7 @@
  * Fetches content from the Strapi CMS backend
  */
 
-const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || 'https://beaconir-production-4fd5.up.railway.app';
+const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || 'https://app.beaconir.com';
 
 interface StrapiResponse<T> {
   data: T;
