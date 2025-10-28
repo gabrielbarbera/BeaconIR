@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "investor_events",
+  "info": {
+    "singularName": "investor-event",
+    "pluralName": "investor-events",
+    "displayName": "Investor Event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "eventDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "location": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Conference",
+        "Webinar",
+        "Annual Meeting",
+        "Earnings Call"
+      ],
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "registrationLink": {
+      "type": "string"
+    },
+    "company": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company"
+    }
+  }
+}
+

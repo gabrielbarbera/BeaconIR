@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leaderships",
+  "info": {
+    "singularName": "leadership",
+    "pluralName": "leaderships",
+    "displayName": "Leadership"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "bio": {
+      "type": "richtext",
+      "required": true
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false
+    },
+    "email": {
+      "type": "email"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "company": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company"
+    }
+  }
+}
+

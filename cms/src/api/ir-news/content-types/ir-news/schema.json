@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ir_news",
+  "info": {
+    "singularName": "ir-news",
+    "pluralName": "ir-news",
+    "displayName": "IR News"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "publishedDate": {
+      "type": "date",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Press Release",
+        "Event",
+        "Financial Update",
+        "Corporate News"
+      ]
+    },
+    "company": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company"
+    }
+  }
+}
+

@@ -1,0 +1,41 @@
+{
+  "kind": "singleType",
+  "collectionName": "stock_info",
+  "info": {
+    "singularName": "stock-info",
+    "pluralName": "stock-infos",
+    "displayName": "Stock Information"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "exchange": {
+      "type": "string",
+      "required": true
+    },
+    "symbol": {
+      "type": "string",
+      "required": true
+    },
+    "cUSIP": {
+      "type": "string"
+    },
+    "cISIN": {
+      "type": "string"
+    },
+    "currentPrice": {
+      "type": "decimal"
+    },
+    "priceChange": {
+      "type": "decimal"
+    },
+    "company": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company"
+    }
+  }
+}
+

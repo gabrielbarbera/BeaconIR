@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sec_filings",
+  "info": {
+    "singularName": "sec-filing",
+    "pluralName": "sec-filings",
+    "displayName": "SEC Filing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "filingType": {
+      "type": "enumeration",
+      "enum": [
+        "10-K",
+        "10-Q",
+        "8-K",
+        "Proxy Statement",
+        "Other"
+      ],
+      "required": true
+    },
+    "filingDate": {
+      "type": "date",
+      "required": true
+    },
+    "document": {
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "company": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company"
+    }
+  }
+}
+
