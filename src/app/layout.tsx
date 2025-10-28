@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Spotlight from "@/components/Spotlight";
+import SessionProvider from "@/components/providers/SessionProvider";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -46,11 +47,13 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased relative" suppressHydrationWarning>
-        <Spotlight />
-        <div className="relative z-10">
-          <Navbar />
-          {children}
-        </div>
+        <SessionProvider>
+          <Spotlight />
+          <div className="relative z-10">
+            <Navbar />
+            {children}
+          </div>
+        </SessionProvider>
       </body>
     </html>
   );
